@@ -84,6 +84,15 @@ RdioTrackView = Backbone.View.extend({
   }
 });
 
+var getPlayingTrackInfo = function() {
+  var playingTrack = R.player.playingTrack();
+  if (playingTrack) {
+    return playingTrack.attributes;
+  } else {
+    return {}
+  }
+}
+
 
 var main = function() {
   if (!rdioUtils.startupChecks()) {
@@ -108,9 +117,9 @@ var main = function() {
   R.ready(function() {
     rdioUtils.authWidget($('#authenticate'));
 
-    rdioTrack.set(R.player.playingTrack().attributes);
+    rdioTrack.set(getPlayingTrackInfo());
     R.player.on('change:playingTrack', function() {
-      rdioTrack.set(R.player.playingTrack().attributes);
+      rdioTrack.set(getPlayingTrackInfo());
     });
   });
 }
