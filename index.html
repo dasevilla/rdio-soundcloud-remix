@@ -9,32 +9,25 @@
   </head>
   <body>
     <div class="container">
-      <div class="page-header">
-        <h1>Remix Search</h1>
-      </div>
-
       <div class="row">
-        <div class="col-12">
-          <p class="lead">Automatically searches SoundCloud for remixes of the currently playing track on Rdio.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
-          <h2>Now Playing on Rdio</h2>
+        <div class="col-12 col-lg-6">
           <div id="rdio-track"></div>
           <p id="authenticate"></p>
         </div>
-        <div class="col-6">
-          <h2>Now Playing on SoundCloud</h2>
+        <div class="col-12 col-lg-6">
           <div id="soundcloud-embed"></div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-8">
-          <h2>Remixes found for <span id="search-query"></span></h2>
+        <div class="col-12">
+          <h2>Remixes on SoundCloud</h2>
           <ul id="soundcloud-track-list" class="list-unstyled"></ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p>Built at Music Hack Day Toronto 2013. Checkout the <a href="https://github.com/dasevilla/rdio-soundcloud-remix">source code</a>.</p>
         </div>
       </div>
 
@@ -42,13 +35,16 @@
 
     <script type="text/template" id="rdio-track-template">
       <div class="row">
-        <div class="col-lg-5">
+        <div class="col-12 col-lg-4">
           <img src="<%= icon %>" class="img-responsive">
         </div>
-        <div class="col-lg-7">
-          <a href="http://www.rdio.com<%= url %>"><%= name %></a><br>
-          <a href="http://www.rdio.com<%= artistUrl %>"><%= artist %></a><br>
-          <a href="http://www.rdio.com<%= albumUrl %>"><%= album %></a>
+        <div class="col-12 col-lg-8">
+          <h2>
+            <a href="http://www.rdio.com<%= url %>">
+              <strong><%= name %><strong><br>
+              by </em><%= artist %></em>
+            </a>
+          </h2>
         </div>
       </div>
     </script>
