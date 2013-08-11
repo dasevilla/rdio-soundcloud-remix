@@ -121,6 +121,19 @@ var main = function() {
     R.player.on('change:playingTrack', function() {
       rdioTrack.set(getPlayingTrackInfo());
     });
+
+    R.player.on('change:playState', function(newValue) {
+      console.log('change:playState', newValue);
+      if (newValue !== R.player.PLAYSTATE_PLAYING) {
+        return;
+      }
+
+      var soundCloudEmbed = $("#soundcloud-embed iframe");
+      if (soundCloudEmbed.length == 1) {
+        var soundCloudEmbedController = SC.Widget(soundCloudEmbed[0]);
+        soundCloudEmbedController.pause();
+      }
+    });
   });
 }
 
